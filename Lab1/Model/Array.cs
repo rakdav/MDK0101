@@ -26,7 +26,7 @@ namespace Lab1.Model
             }
             Console.WriteLine();
         }
-        public abstract void Add(Array mas);
-        public abstract void Foreach();
+        public abstract string Add(Array mas);
+        public abstract string Foreach();
     }
 }

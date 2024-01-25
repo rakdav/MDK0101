@@ -10,22 +10,24 @@ namespace Lab1.Model
     {
         public AndArray(int size) : base(size){}
 
-        public override void Add(Array mas)
+        public override string Add(Array mas)
         {
-            var result=Mas.Intersect(mas.Mas); 
+            var result=Mas.Intersect(mas.Mas);
+            string res = string.Empty;
             foreach(var i in result)
             {
-                Console.Write(i+" ");
+                res+=i+" ";
             }
-            Console.WriteLine();
+            return res;
         }
-        public override void Foreach()
+        public override string Foreach()
         {
+            string res = string.Empty;
             foreach (var i in Mas)
             {
-                Console.Write(Math.Sqrt(i) + " ");
+                res+=Math.Sqrt(i) + " ";
             }
-            Console.WriteLine();
+            return res;
         }
     }
 }

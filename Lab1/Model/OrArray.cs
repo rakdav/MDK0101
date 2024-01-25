@@ -10,22 +10,24 @@ namespace Lab1.Model
     {
         public OrArray(int size) : base(size)
         {}
-        public override void Add(Array mas)
+        public override string Add(Array mas)
         {
             var result = Mas.Union(mas.Mas);
+            string res = string.Empty;
             foreach (var i in result)
             {
-                Console.Write(i + " ");
+                res += i + " ";
             }
-            Console.WriteLine();
+            return res;
         }
-        public override void Foreach()
+        public override string Foreach()
         {
+            string res = string.Empty;
             foreach (var i in Mas)
             {
-                Console.Write(Math.Log(i) + " ");
+                res += Math.Log(i) + " ";
             }
-            Console.WriteLine();
+            return res;
         }
     }
 }
