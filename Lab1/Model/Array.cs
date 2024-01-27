@@ -18,13 +18,14 @@ namespace Lab1.Model
                 Mas[i] = random.Next(10, 100);
             }
         }
-        public void Print()
+        public String Print()
         {
+            string res = String.Empty;
             foreach(int i in Mas)
             {
-                Console.Write(i+" ");
+                res+=i+" ";
             }
-            Console.WriteLine();
+            return res;
         }
         public abstract string Add(Array mas);
         public abstract string Foreach();

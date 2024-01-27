@@ -25,7 +25,7 @@ namespace Lab1.Model
             string res = string.Empty;
             foreach (var i in Mas)
             {
-                res+=Math.Sqrt(i) + " ";
+                res += String.Format($"{Math.Sqrt(i):F2} ");
             }
             return res;
         }

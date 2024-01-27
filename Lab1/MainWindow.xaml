@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
@@ -22,45 +22,23 @@
                 <Label Content="Введите размер" Margin="5"/>
                 <TextBox x:Name="FirstSize" Width="200"
                          Margin="5"/>
-                <Button Content="Generate" Margin="5"/>
+                <Button Content="Generate" Margin="5" Click="Button_Click"/>
             </StackPanel>
-            <TextBlock Grid.Row="1" x:Name="ResFirst"
+            <StackPanel Grid.Row="1">
+                <RadioButton x:Name="IsAndArray" GroupName="ClassMethod" Content="AndArray" Margin="5"/>
+                <RadioButton x:Name="IsOrArray" GroupName="ClassMethod" Content="OrArray" Margin="5"/>
+            </StackPanel>
+            <TextBlock Grid.Row="2" x:Name="ResFirst"
                        Margin="10"/>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Add" Grid.Column="0"
-                        Margin="10"/>
+                        Margin="10" Click="Button_Click_1"/>
                 <Button Content="Foreach" Grid.Column="1"
-                        Margin="10"/>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal"
-          Margin="5 10">
-                <Label Content="Введите размер" Margin="5"/>
-                <TextBox x:Name="SecondSize" Width="200"
-                  Margin="5"/>
-                <Button Content="Generate" Margin="5"/>
-            </StackPanel>
-            <TextBlock Grid.Row="1" x:Name="ResSecond"
-                Margin="10"/>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Content="Add" Grid.Column="0"
-                 Margin="10"/>
-                <Button Content="Foreach" Grid.Column="1"
-                 Margin="10"/>
+                        Margin="10" Click="Button_Click_2"/>
             </Grid>
         </Grid>
     </Grid>
