@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="450" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,18 +18,22 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal"
-                 Margin="5 10">
-                <Label Content="Введите размер" Margin="5"/>
+                 Margin="5 5">
+                <Label Content="Введите размер" Margin="5" VerticalAlignment="Center"/>
                 <TextBox x:Name="FirstSize" Width="200"
                          Margin="5"/>
-                <Button Content="Generate" Margin="5" Click="Button_Click"/>
+                <Button Content="Generate" Margin="10 5" Click="Button_Click"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <RadioButton x:Name="IsAndArray" GroupName="ClassMethod" Content="AndArray" Margin="5"/>
-                <RadioButton x:Name="IsOrArray" GroupName="ClassMethod" Content="OrArray" Margin="5"/>
+                <RadioButton x:Name="IsAndArray" GroupName="ClassMethod" Content="AndArray" Margin="5"
+                    Style="{StaticResource MaterialDesignLightRadioButton}"
+                />
+
+                <RadioButton x:Name="IsOrArray" GroupName="ClassMethod" Content="OrArray" Margin="5"
+                             Style="{StaticResource MaterialDesignLightRadioButton}"/>
             </StackPanel>
             <TextBlock Grid.Row="2" x:Name="ResFirst"
-                       Margin="10"/>
+                       Margin="10" FontSize="16"/>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
