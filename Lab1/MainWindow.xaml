@@ -17,13 +17,19 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal"
-                 Margin="5 5">
-                <Label Content="Введите размер" Margin="5" VerticalAlignment="Center"/>
-                <TextBox x:Name="FirstSize" Width="200"
-                         Margin="5"/>
-                <Button Content="Generate" Margin="10 5" Click="Button_Click"/>
-            </StackPanel>
+            <Grid Grid.Row="0" Margin="5 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Введите размер" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="FirstSize"
+                         Margin="5" Grid.Column="1" FontSize="16"/>
+                <Button Content="Generate" Margin="10 5"
+                        Grid.Column="2"
+                        Click="Button_Click"/>
+            </Grid>
             <StackPanel Grid.Row="1">
                 <RadioButton x:Name="IsAndArray" GroupName="ClassMethod" Content="AndArray" Margin="5"
                     Style="{StaticResource MaterialDesignLightRadioButton}"
