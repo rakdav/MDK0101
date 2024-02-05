@@ -20,5 +20,68 @@ namespace Lab3
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Fraction f1 = new Fraction()
+            {
+                First = long.Parse(FirstOne.Text),
+                Second = ushort.Parse(SecondOne.Text)
+            };
+            Fraction f2 = new Fraction()
+            {
+                First = long.Parse(FirstTwo.Text),
+                Second = ushort.Parse(SecondTwo.Text)
+            };
+            Fraction res = f1 + f2;
+            Result.Text = res.ToString();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Fraction f1 = new Fraction()
+            {
+                First = long.Parse(FirstOne.Text),
+                Second = ushort.Parse(SecondOne.Text)
+            };
+            Fraction f2 = new Fraction()
+            {
+                First = long.Parse(FirstTwo.Text),
+                Second = ushort.Parse(SecondTwo.Text)
+            };
+            Fraction res = f1 - f2;
+            Result.Text = res.ToString();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Fraction f1 = new Fraction()
+            {
+                First = long.Parse(FirstOne.Text),
+                Second = ushort.Parse(SecondOne.Text)
+            };
+            Fraction f2 = new Fraction()
+            {
+                First = long.Parse(FirstTwo.Text),
+                Second = ushort.Parse(SecondTwo.Text)
+            };
+            Fraction res = f1 * f2;
+            Result.Text = res.ToString();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Fraction f1 = new Fraction()
+            {
+                First = long.Parse(FirstOne.Text),
+                Second = ushort.Parse(SecondOne.Text)
+            };
+            Fraction f2 = new Fraction()
+            {
+                First = long.Parse(FirstTwo.Text),
+                Second = ushort.Parse(SecondTwo.Text)
+            };
+            Result.Text = (f1==f2).ToString();
+        }
     }
 }
