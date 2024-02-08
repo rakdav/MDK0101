@@ -22,7 +22,7 @@ namespace Lab3
             double a1 = f1.First + (f1.Second / Math.Pow(10, f1.Second.ToString().Length));
             double a2 = f2.First + (f2.Second / Math.Pow(10, f1.Second.ToString().Length));
             double res = Math.Round(a1 - a2,3);
-            return new Fraction() { First = (long)Math.Floor(res), Second = ushort.Parse(res.ToString().Split(',')[1]) };
+            return new Fraction() { First = (long)Math.Floor(res), Second = ushort.Parse(res.ToString().Split(",")[1]) };
         }
         public static Fraction operator *(Fraction f1, Fraction f2)
         {
