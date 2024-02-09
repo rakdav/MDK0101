@@ -20,12 +20,12 @@ ClassUser[] mas = { cl1, cl2, cl3 };
 Array.Sort(mas);
 foreach(ClassUser i in mas)
 {
-    Console.WriteLine(i.Login);
+    Console.WriteLine(i.Login+" "+i.Height);
 }
 Array.Sort(mas, new UserComparer());
 foreach (ClassUser i in mas)
 {
-    Console.WriteLine(i.Login);
+    Console.WriteLine(i.Login+" "+i.Height);
 }
 class ClassUser : ICloneable, IComparable
 {
