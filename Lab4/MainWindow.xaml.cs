@@ -16,7 +16,7 @@ namespace Lab4
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Monster<int>[] Monsters { get; set; }
+        public Monster<int>[]? Monsters { get; set; } = null;
         public MainWindow()
         {
             InitializeComponent();
