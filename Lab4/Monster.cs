@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    class Monster<T>:ICloneable,IComparable
+    public class Monster<T>:ICloneable,IComparable
     {
-        public T? id { get; set; }
+        public T? Id { get; set; }
         public string? Name { get; set; }
         public int Health { get; set; }
         public int Ammo { get; set; }
+        public static int Count = 0;
         public object Clone()
         {
             return new Monster<T>()
             {
-                id=this.id,
+                Id=this.Id,
                 Name=this.Name,
                 Health=this.Health,
                 Ammo=this.Ammo

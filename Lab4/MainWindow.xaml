@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Лабораторная работа 4" Height="450" Width="800"
+        FontSize="20">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0">
+            <MenuItem Header="Mеню">
+                <MenuItem Header="Создать ..." Click="MenuItem_Click" ></MenuItem>
+                <MenuItem Header="Копировать"></MenuItem>
+                <Separator />
+                <MenuItem Header="Выход" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="О программе" ></MenuItem>
+        </Menu>
+        <ToolBar Height="50" Grid.Row="1">
+            <Button Margin="5">
+                <Image Source="plus.png" />
+            </Button>
+            <Button Margin="5">
+                <Image Source="copy.png" />
+            </Button>
+            <TextBox x:Name="tbCount" Width="100"/>
+            <Button Content="Сгенерировать" Click="Button_Click"/>
+        </ToolBar>
+        <ListView Name="monsterList" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Width="50">ID</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Width="200">Имя</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Health}" Width="100">Здоровье</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Ammo}" Width="100">Патроны</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StatusBar Grid.Row="3">
+            
+        </StatusBar>
     </Grid>
 </Window>
