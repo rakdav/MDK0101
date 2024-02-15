@@ -67,7 +67,12 @@ namespace Lab4
         {
             if (monsterList.SelectedItems.Count != 0)
             {
-
+                Monster<int>? monster=monsterList.SelectedItem as Monster<int>;
+                Monsters![Monster<int>.Count] = (Monster<int>)monster!.Clone();
+                monsterList.ItemsSource = null;
+                monsterList.ItemsSource = Monsters;
+                Monster<int>.Count++;
+                stCount.Content = "Создано " + Monster<int>.Count + " из " + tbCount.Text;
             }
         }
     }
