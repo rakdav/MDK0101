@@ -16,18 +16,18 @@
         </Grid.RowDefinitions>
         <Menu Height="25" VerticalAlignment="Top" Grid.Row="0">
             <MenuItem Header="Mеню">
-                <MenuItem Header="Создать ..." Click="MenuItem_Click" ></MenuItem>
-                <MenuItem Header="Копировать"></MenuItem>
+                <MenuItem x:Name="mmCreate" Header="Создать ..." Click="MenuItem_Click" ></MenuItem>
+                <MenuItem x:Name="mmCopy" Header="Копировать" Click="mmCopy_Click"></MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" ></MenuItem>
             </MenuItem>
             <MenuItem Header="О программе" ></MenuItem>
         </Menu>
         <ToolBar Height="50" Grid.Row="1">
-            <Button Margin="5">
+            <Button Margin="5" x:Name="tbCreate">
                 <Image Source="plus.png" />
             </Button>
-            <Button Margin="5">
+            <Button Margin="5" x:Name="tbCopy">
                 <Image Source="copy.png" />
             </Button>
             <TextBox x:Name="tbCount" Width="100"/>
@@ -44,7 +44,7 @@
             </ListView.View>
         </ListView>
         <StatusBar Grid.Row="3">
-            
+            <Label Name="stCount"/>
         </StatusBar>
     </Grid>
 </Window>

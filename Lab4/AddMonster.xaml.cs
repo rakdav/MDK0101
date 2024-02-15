@@ -34,7 +34,7 @@ namespace Lab4
                 tbID.Text = value.ToString();
             }
         }
-        public string Name
+        public string? Name
         {
             get
             {
