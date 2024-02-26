@@ -5,34 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab5"
         mc:Ignorable="d"
-        Title="Лабораторная работа 5" Height="300" Width="400">
+        Title="Лабораторная работа 5" Height="350" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Введите большее основание"/>
-        <TextBox Grid.Row="1" x:Name="SideA" Margin="5"/>
+        <TextBox Grid.Row="1" x:Name="SideA" Margin="5" FontSize="20"/>
         <Label Grid.Row="2" Content="Введите меньшее основание"/>
-        <TextBox Grid.Row="3" x:Name="SideB" Margin="5"/>
+        <TextBox Grid.Row="3" x:Name="SideB" Margin="5" FontSize="20"/>
         <Label Grid.Row="4" Content="Введите боковую сторону"/>
-        <TextBox Grid.Row="5" x:Name="SideC" Margin="5"/>
-        <Grid Grid.Row="6">
+        <TextBox Grid.Row="5" x:Name="SideC" Margin="5" FontSize="20"/>
+        <TextBlock Grid.Row="6" x:Name="Result" Margin="5" FontSize="20"/>
+        <Grid Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="1" Margin="10"/>
-            <Button Grid.Column="1" Content="2" Margin="10"/>
-            <Button Grid.Column="2" Content="3" Margin="10"/>
-            <Button Grid.Column="3" Content="4" Margin="10"/>
+            <Button Grid.Column="0" Content="1" Margin="10" Click="Button_Click"/>
+            <Button Grid.Column="1" Content="2" Margin="10" Click="Button_Click_1"/>
+            <Button Grid.Column="2" Content="3" Margin="10" Click="Button_Click_2"/>
+            <Button Grid.Column="3" Content="4" Margin="10" Click="Button_Click_3"/>
         </Grid>
     </Grid>
 </Window>
