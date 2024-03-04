@@ -25,6 +25,11 @@ foreach(CalcDelegate item in multDelegate.GetInvocationList())
 {
     Console.WriteLine(item(x,y));
 }
+multDelegate -= calc.Mult;
+foreach (CalcDelegate item in multDelegate.GetInvocationList())
+{
+    Console.WriteLine(item(x, y));
+}
 
 ExampleClass example = new ExampleClass();
 int a = 6, b = 9;
