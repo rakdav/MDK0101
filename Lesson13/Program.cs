@@ -1,4 +1,6 @@
 ﻿//*******Action**********//
+using static System.Net.Mime.MediaTypeNames;
+
 Action<string, ConsoleColor, int> actionTarget = DisplayMessage;
 actionTarget("Hello!", ConsoleColor.Yellow, 5);
 //*******Func************//
@@ -69,7 +71,12 @@ var f = outerFn();
 f();
 f();
 //*************Ковариантность делегатов***************//
-
+MessageBuilder mb = WriteEmailMassage;
+MessageClass message = mb("Hello");
+message.Print();
+//*************Контрвариантность делегатов***************//
+EmailReceiver emailBox = ReceiveMessage;
+emailBox(new EmailMessage("Welcome"));
 static bool IsPositive (int x)
 {
     return x > 0;
@@ -95,11 +102,13 @@ static void DisplayMessage (string msg, ConsoleColor txtColor,int printCount)
 }
 
 
-
+EmailMessage WriteEmailMassage (string text)=>new EmailMessage(text);
+void ReceiveMessage ( MessageClass message ) => message.Print();
 delegate void MessageHandler (string message);
 delegate int Operation(int x,int y);
 delegate void Message();
 delegate MessageClass MessageBuilder ( string text );
+delegate void EmailReceiver ( EmailMessage message );
 class MessageClass
 {
     public string Text { get; }
