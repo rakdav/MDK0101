@@ -37,7 +37,28 @@
                 </Grid>          
             </TabItem>
             <TabItem Header="Стеки и очереди">
-
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lbQueue" Grid.Column="0" Margin="10"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="tbElementQueue" Margin="10 20"
+                                 Grid.Row="0"/>
+                        <Button Content="Добавить" Margin="10" Grid.Row="1" Click="Button_Click_3"/>
+                        <TextBox x:Name="tbCount" Margin="10 20" Grid.Row="2"/>
+                        <Button Content="Извлечь" Margin="10" Grid.Row="3" Click="Button_Click_4"/>
+                        <TextBlock x:Name="tbResultQueue" Grid.Row="4"/>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="Списки">
 

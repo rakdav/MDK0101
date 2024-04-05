@@ -17,10 +17,12 @@ namespace Lab6
     public partial class MainWindow : Window
     {
         private List<int> listLab1;
+        private Queue<int> queue;
         public MainWindow ()
         {
             InitializeComponent();
             listLab1 = new List<int>();
+            queue = new Queue<int>();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,6 +49,27 @@ namespace Lab6
                 if (l < 0) count++;
             }
             Result.Text ="Количество отрицательных:"+count.ToString();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            queue.Enqueue(int.Parse(tbElementQueue.Text));
+            lbQueue.ItemsSource = null;
+            lbQueue.ItemsSource = queue;
+            tbElementQueue.Text = "";
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            int n = int.Parse(tbCount.Text);
+            string result = "";
+            for(int i = 0; i < n; i++)
+            {
+                result += queue.Dequeue() + " ";
+            }
+            tbResultQueue.Text = result;
+            lbQueue.ItemsSource = null;
+            lbQueue.ItemsSource = queue;
         }
     }
 }
