@@ -18,11 +18,13 @@ namespace Lab6
     {
         private List<int> listLab1;
         private Queue<int> queue;
+        private LinkedList<int> listLab3;
         public MainWindow ()
         {
             InitializeComponent();
             listLab1 = new List<int>();
             queue = new Queue<int>();
+            listLab3 = new LinkedList<int>();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,6 +72,38 @@ namespace Lab6
             tbResultQueue.Text = result;
             lbQueue.ItemsSource = null;
             lbQueue.ItemsSource = queue;
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            listLab3.Add(int.Parse(tbElementAdd.Text));
+            lbList3.Items.Clear();
+            foreach (int item in listLab3)
+            {
+                lbList3.Items.Add(item);
+            }
+            tbElementAdd.Text = "";
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            int i = 0;
+            foreach(var index in listLab3)
+            {
+                if (index < 2) listLab3.Insert(i+1, 15);
+                i++;
+            }
+            lbList3.Items.Clear();
+            foreach (int item in listLab3)
+            {
+                lbList3.Items.Add(item);
+            }
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            listLab3.Clear();
+            lbList3.Items.Clear();
         }
     }
 }

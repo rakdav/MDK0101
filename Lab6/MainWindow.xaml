@@ -61,9 +61,28 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Списки">
-
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lbList3" Grid.Column="0" Margin="10"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="tbElementAdd" Margin="10 20"
+              Grid.Row="0"/>
+                        <Button Content="Добавить" Margin="10" Grid.Row="1" Click="Button_Click_5"/>
+                        <Button Content="Вставить" Margin="10" Grid.Row="2" Click="Button_Click_6"/>
+                        <Button Content="Очистить" Margin="10" Grid.Row="3" Click="Button_Click_7"/>
+                    </Grid>
+                </Grid>
             </TabItem>
-            <TabItem Header="Словари">
+    <TabItem Header="Словари">
 
             </TabItem>
         </TabControl>
