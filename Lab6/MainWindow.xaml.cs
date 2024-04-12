@@ -105,5 +105,16 @@ namespace Lab6
             listLab3.Clear();
             lbList3.Items.Clear();
         }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            List<Bone> list = new List<Bone>();
+            for (int i = 1; i <= 1000; i++)
+            {
+                list.Add(new Bone(i));
+            }
+            Ishod.ItemsSource = list;
+
+        }
     }
 }
