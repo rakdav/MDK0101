@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab6"
         mc:Ignorable="d"
-        Title="Лабораторные 6,7,8,9" Height="450" Width="800" FontSize="20">
+        Title="Лабораторные 6,7,8,9" Height="450" Width="1000" FontSize="20">
     <Grid>
         <TabControl>
             <TabItem Header="Динамические массивы">
@@ -105,7 +105,13 @@
                         </ListView.View>
                     </ListView>
                     <ListView Name="Results" Grid.Row="1" Grid.Column="1" Margin="10">
-                        
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Number}" Width="100">Исход</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=First}" Width="200">Процент симуляции</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Second}" Width="200">Ожидаемый процент</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
                     </ListView>
                 </Grid>
             </TabItem>
