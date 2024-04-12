@@ -114,7 +114,39 @@ namespace Lab6
                 list.Add(new Bone(i));
             }
             Ishod.ItemsSource = list;
-
+            Dictionary<int, Probably> results = new Dictionary<int,Probably>();
+            double count2, count3, count4, count5, count6, count7, count8, count9,
+                count10, count11, count12;
+                count2 = count3 = count4 = count5 = count6 = count7 = count8 = count9=count10 = count11 = count12 = 0;
+            foreach (Bone item in list)
+            {
+                switch (item.Summa)
+                {
+                    case 2:count2++;break;
+                    case 3: count3++; break;
+                    case 4: count4++; break;
+                    case 5: count5++; break;
+                    case 6: count6++; break;
+                    case 7: count7++; break;
+                    case 8: count8++; break;
+                    case 9: count9++; break;
+                    case 10: count10++; break;
+                    case 11: count11++; break;
+                    case 12: count12++; break;
+                }
+            }
+            Random random = new Random();
+            results.Add(2, new Probably { Prob=count2 / 1000,Teoria=random.NextDouble() * 20 });
+            results.Add(3, new Probably { Prob = count3 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(4, new Probably { Prob = count4 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(5, new Probably { Prob = count5 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(6, new Probably { Prob = count6 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(7, new Probably { Prob = count7 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(8, new Probably { Prob = count8 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(9, new Probably { Prob = count9 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(10, new Probably { Prob = count10 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(11, new Probably { Prob = count11 / 1000, Teoria = random.NextDouble() * 20 });
+            results.Add(12, new Probably { Prob = count12 / 1000, Teoria = random.NextDouble() * 20 });
         }
     }
 }
