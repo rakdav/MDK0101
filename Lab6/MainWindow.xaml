@@ -82,7 +82,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Словари">
+            <TabItem Header="Словари" Height="31" VerticalAlignment="Top">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -97,10 +97,10 @@
                     <ListView Name="Ishod" Grid.Row="1" Grid.Column="0" Margin="10">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Number}">Номер</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=First}">Кость 1</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Second}">Кость 2</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Summa}">Сумма</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Number}" Width="50">Номер</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=First}" Width="150">Кость 1</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Second}" Width="150">Кость 2</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Summa}" Width="150">Сумма</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
