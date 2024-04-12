@@ -147,7 +147,12 @@ namespace Lab6
             results.Add(10, new Probably { Prob = count10 / 1000, Teoria = random.NextDouble() * 20 });
             results.Add(11, new Probably { Prob = count11 / 1000, Teoria = random.NextDouble() * 20 });
             results.Add(12, new Probably { Prob = count12 / 1000, Teoria = random.NextDouble() * 20 });
-
+            List<ResultBone> resBone = new List<ResultBone>();
+            foreach(var res in results)
+            {
+                resBone.Add(new ResultBone { Key = res.Key, Prob = Math.Round(res.Value.Prob*100,2), Pred = Math.Round(res.Value.Teoria,2)});
+            }
+            Results.ItemsSource = resBone;
         }
     }
 }

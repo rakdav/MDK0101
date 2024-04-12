@@ -107,9 +107,9 @@
                     <ListView Name="Results" Grid.Row="1" Grid.Column="1" Margin="10">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Number}" Width="100">Исход</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=First}" Width="200">Процент симуляции</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Second}" Width="200">Ожидаемый процент</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Key}" Width="100">Исход</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Prob}" Width="200">Процент симуляции</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Pred}" Width="200">Ожидаемый процент</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
