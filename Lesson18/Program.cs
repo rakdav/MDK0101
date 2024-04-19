@@ -90,5 +90,8 @@ while (true)
                 }
             }
             break;
+        case "touch":
+            FileStream file = File.Create(commands[1]);
+            break;
     }
 }
