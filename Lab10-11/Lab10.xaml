@@ -9,6 +9,35 @@
       Title="Lab10">
 
     <Grid>
-        <Label Content="Hello, from label10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Menu VerticalAlignment="Top" Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Создать..." Click="MenuItem_Click" ></MenuItem>
+                <MenuItem Header="Открыть..." Click="MenuItem_Click_1"  ></MenuItem>
+                <MenuItem Header="Сохранить..." ></MenuItem>
+                <Separator />
+                <MenuItem Header="Выход" ></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1">
+            <Button Click="Button_Click" >
+                <Image Source="create.png" />
+            </Button>
+            <Button Click="Button_Click_1">
+                <Image Source="open.png" />
+            </Button>
+            <Button>
+                <Image Source="save.png" />
+            </Button>
+            <Separator/>
+        </ToolBar>
+        <TextBox Grid.Row="2" Name="tbEdit" Margin="10" FontSize="14"
+                 TextWrapping="Wrap" AcceptsReturn="True" 
+                 VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Page>
