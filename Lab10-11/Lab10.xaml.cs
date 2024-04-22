@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -40,6 +41,18 @@ namespace Lab10_11
                 using (StreamReader reader = new StreamReader(ofd.FileName))
                 {
                     tbEdit.Text = await reader.ReadToEndAsync();
+                }
+            }
+        }
+        private async void SaveAs()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text files(*.txt)|*.txt";
+            if (sfd.ShowDialog() == true)
+            {
+                using (StreamWriter writer = new StreamWriter(sfd.FileName, false))
+                {
+                    await writer.WriteLineAsync(tbEdit.Text);
                 }
             }
         }
