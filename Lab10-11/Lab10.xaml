@@ -7,7 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Lab10">
-
+    <Page.CommandBindings>
+        <CommandBinding Command="Save" Executed="MenuItem_Click_2" />
+    </Page.CommandBindings>
+    <Page.InputBindings>
+        <KeyBinding Command="Save" Key="S" Modifiers="Control"/>
+    </Page.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,7 +24,7 @@
             <MenuItem Header="File">
                 <MenuItem Header="Создать..." Click="MenuItem_Click" ></MenuItem>
                 <MenuItem Header="Открыть..." Click="MenuItem_Click_1"  ></MenuItem>
-                <MenuItem Header="Сохранить..." ></MenuItem>
+                <MenuItem Header="Сохранить как..." Click="MenuItem_Click_2" ></MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" ></MenuItem>
             </MenuItem>
@@ -31,7 +36,7 @@
             <Button Click="Button_Click_1">
                 <Image Source="open.png" />
             </Button>
-            <Button>
+            <Button Click="Button_Click_2" >
                 <Image Source="save.png" />
             </Button>
             <Separator/>

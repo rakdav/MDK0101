@@ -24,9 +24,11 @@ namespace Lab10_11
     /// </summary>
     public partial class Lab10 : Page
     {
+        private string fileName;
         public Lab10()
         {
             InitializeComponent();
+            fileName = string.Empty;
         }
         private void Create()
         {
@@ -42,6 +44,21 @@ namespace Lab10_11
                 {
                     tbEdit.Text = await reader.ReadToEndAsync();
                 }
+                fileName = ofd.FileName;
+            }
+        }
+        private async void Save()
+        {
+            if (fileName.Length != 0)
+            {
+                using (StreamWriter writer = new StreamWriter(fileName, false))
+                {
+                    await writer.WriteLineAsync(tbEdit.Text);
+                }
+            }
+            else
+            {
+                SaveAs();
             }
         }
         private async void SaveAs()
@@ -54,6 +71,7 @@ namespace Lab10_11
                 {
                     await writer.WriteLineAsync(tbEdit.Text);
                 }
+                fileName = sfd.FileName;
             }
         }
 
@@ -75,6 +93,16 @@ namespace Lab10_11
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Open();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            SaveAs();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Save();
         }
     }
 }
