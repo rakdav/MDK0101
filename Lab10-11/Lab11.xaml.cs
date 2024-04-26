@@ -20,9 +20,39 @@ namespace Lab10_11
     /// </summary>
     public partial class Lab11 : Page
     {
+        private List<Film> films;
         public Lab11()
         {
             InitializeComponent();
+            films = new List<Film>();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<Days> days = new List<Days>();
+            if (Sun.IsChecked == true) days.Add(Days.Sunday);
+            if (Mon.IsChecked == true) days.Add(Days.Monday);
+            if (Thu.IsChecked == true) days.Add(Days.Tuesday);
+            if (Wen.IsChecked == true) days.Add(Days.Wednesday);
+            if (Thi.IsChecked == true) days.Add(Days.Thursday);
+            if (Fri.IsChecked == true) days.Add(Days.Friday);
+            if (Sat.IsChecked == true) days.Add(Days.Saturday);
+            Film film = new Film()
+            {
+                Name = NameFilm.Text,
+                CountSeria = int.Parse(CountFilm.Text),
+                Duration = int.Parse(CountFilm.Text),
+                Day=days
+            };
+            films.Add(film);
+            UpdateUI();
+        }
+        public void UpdateUI()
+        {
+            foreach(Film i in films)
+            {
+                FilmsPanel.Children.Add(new FilmControl());
+            }
         }
     }
 }

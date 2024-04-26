@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Lab10_11"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Lab11">
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="Lab11" FontSize="20">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,8 +24,10 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Vertical" Name="FilmsPanel"
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Name="FilmsPanel"
                         Grid.Column="0"/>
+            </ScrollViewer>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -34,6 +36,19 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <TextBox Name="NameFilm" Margin="10 15" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBox Name="CountFilm" Margin="10 15" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBox Name="DurationFilm" Margin="10 15" Grid.Row="2" VerticalAlignment="Center"/>
+                <WrapPanel Grid.Row="3" Orientation="Horizontal" Margin="10 15" HorizontalAlignment="Center">
+                    <CheckBox Name="Sun">Вс</CheckBox>
+                    <CheckBox Name="Mon">Пн</CheckBox>
+                    <CheckBox Name="Thu">Вт</CheckBox>
+                    <CheckBox Name="Wen">Ср</CheckBox>
+                    <CheckBox Name="Thi">Чт</CheckBox>
+                    <CheckBox Name="Fri">Пт</CheckBox>
+                    <CheckBox Name="Sat">Сб</CheckBox>
+                </WrapPanel>
+                <Button Grid.Row="4" Margin="10 15" Content="Добавить" Click="Button_Click"/>
             </Grid>
         </Grid>
         <StatusBar Grid.Row="2"/>
