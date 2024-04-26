@@ -104,5 +104,36 @@ namespace Lab10_11
         {
             Save();
         }
+
+        private void bold_Click(object sender, RoutedEventArgs e)
+        {
+            tbEdit.FontWeight = (bold.IsChecked==true)?FontWeights.Bold:
+                FontWeights.Normal;
+        }
+
+        private void italic_Click(object sender, RoutedEventArgs e)
+        {
+            tbEdit.FontStyle = (italic.IsChecked == true) ? FontStyles.Italic :
+                FontStyles.Normal;
+        }
+
+        private void underline_Click(object sender, RoutedEventArgs e)
+        {
+            tbEdit.TextDecorations = (underline.IsChecked==true) ? TextDecorations.Underline : null;
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                string? line;
+                string? result="";
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    if (line.Contains(filter.Text)) result += line;
+                }
+                tbEdit.Text = result;
+            }
+        }
     }
 }

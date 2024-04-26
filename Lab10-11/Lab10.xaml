@@ -40,9 +40,32 @@
                 <Image Source="save.png" />
             </Button>
             <Separator/>
+            <Button x:Name="copy" Command="ApplicationCommands.Copy" ToolTip="Copy" >
+                <Image Source="copy.png"/>
+            </Button>
+            <Button x:Name="cut" Command="ApplicationCommands.Cut" ToolTip="Cut" >
+                <Image Source="cut.png"/>
+            </Button>
+            <Button x:Name="paste" Command="ApplicationCommands.Paste" ToolTip="Paste" >
+                <Image Source="paste.png"/>
+            </Button>
+            <Separator/>
+            <ToggleButton x:Name="bold" ToolTip="Bold" Click="bold_Click" >
+                <Image Source="bold.png"/>
+            </ToggleButton>
+            <ToggleButton x:Name="italic" ToolTip="Italic" Click="italic_Click">
+                <Image Source="I.png"/>
+            </ToggleButton>
+            <ToggleButton x:Name="underline" ToolTip="Underline" Click="underline_Click">
+                <Image Source="u.png"/>
+            </ToggleButton>
+            <Separator/>
+            <TextBox Name="filter" Width="150" />
+            <Button Content="Найти" Click="Button_Click_3"/>
         </ToolBar>
         <TextBox Grid.Row="2" Name="tbEdit" Margin="10" FontSize="14"
                  TextWrapping="Wrap" AcceptsReturn="True" 
                  VerticalScrollBarVisibility="Auto"/>
+      
     </Grid>
 </Page>
