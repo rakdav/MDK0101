@@ -19,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace Lab10_11
 {
-    /// <summary>
-    /// Логика взаимодействия для Lab11.xaml
-    /// </summary>
     public partial class Lab11 : Page
     {
         private List<Film> films;
