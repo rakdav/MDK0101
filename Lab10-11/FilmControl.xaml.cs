@@ -20,9 +20,16 @@ namespace Lab10_11
     /// </summary>
     public partial class FilmControl : UserControl
     {
-        public FilmControl()
+        public FilmControl(Film film)
         {
             InitializeComponent();
+            MainGrid.DataContext = film;
+            string res = "";
+            foreach (var item in film.Day!)
+            {
+                res += item+";";
+            }
+            DaysFilms.Content = res;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Lab10_11
             {
                 Name = NameFilm.Text,
                 CountSeria = int.Parse(CountFilm.Text),
-                Duration = int.Parse(CountFilm.Text),
+                Duration = int.Parse(DurationFilm.Text),
                 Day=days
             };
             films.Add(film);
@@ -49,10 +49,16 @@ namespace Lab10_11
         }
         public void UpdateUI()
         {
+            FilmsPanel.Children.Clear();
             foreach(Film i in films)
             {
-                FilmsPanel.Children.Add(new FilmControl());
+                FilmsPanel.Children.Add(new FilmControl(i));
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
