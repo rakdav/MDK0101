@@ -15,7 +15,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <ToolBar Grid.Row="0">
-            <Button>
+            <Button Click="Button_Click_2">
                 <Image Source="open.png" />
             </Button>
             <Button Click="Button_Click_1">
@@ -54,6 +54,8 @@
                 <Button Grid.Row="4" Margin="10 15" Content="Добавить" Click="Button_Click"/>
             </Grid>
         </Grid>
-        <StatusBar Grid.Row="2"/>
+        <StatusBar Grid.Row="2">
+            <Label Name="maxFilm" Content=""/>
+        </StatusBar>
     </Grid>
 </Page>
