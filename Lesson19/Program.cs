@@ -165,33 +165,37 @@
 //}
 //Console.WriteLine();
 
-Console.Write("Введите размер массива:");
-int n = int.Parse(Console.ReadLine()!);
-int[] mas = new int[n]; 
-Random r = new Random();
+//Console.Write("Введите размер массива:");
+//int n = int.Parse(Console.ReadLine()!);
+//int[] mas = new int[n]; 
+//Random r = new Random();
 //for (int i = 0; i < mas.Length; i++)
 //{
 //    mas[i] = r.Next(-10, 20);
 //}
-mas = mas.Select(i => i + r.Next(-10, 20)).ToArray(); 
-foreach (int item in mas)
-{
-    Console.Write(item + " ");
-}
-Console.WriteLine();
+//mas = mas.Select(i => i + r.Next(-10, 20)).ToArray(); 
+//foreach (int item in mas)
+//{
+//    Console.Write(item + " ");
+//}
+//Console.WriteLine();
 
-Console.WriteLine(mas.Where(i=>i%2==0).Sum());
-Console.WriteLine(mas.Aggregate((x,y)=>x*y));
-Console.WriteLine(mas.Sum(i=>i*i));
-Console.WriteLine(mas.Skip(6).Sum());
-int k1 = 2, k2 = 10;
-Console.WriteLine(mas.Where((i,j)=>j>=k1&&j<=k2).Sum());
-Console.WriteLine(mas.Average());
-Console.WriteLine(mas.Where((i, j) => j >= k1 && j <= k2).Average());
+//Console.WriteLine(mas.Where(i=>i%2==0).Sum());
+//Console.WriteLine(mas.Aggregate((x,y)=>x*y));
+//Console.WriteLine(mas.Sum(i=>i*i));
+//Console.WriteLine(mas.Skip(6).Sum());
+//int k1 = 2, k2 = 10;
+//Console.WriteLine(mas.Where((i,j)=>j>=k1&&j<=k2).Sum());
+//Console.WriteLine(mas.Average());
+//Console.WriteLine(mas.Where((i, j) => j >= k1 && j <= k2).Average());
 
-foreach(int i in mas.Where(i=>i>=0))
-    Console.Write(i+" ");
-Console.WriteLine();
+//foreach(int i in mas.Where(i=>i>=0))
+//    Console.Write(i+" ");
+//Console.WriteLine();
+
+
+using System.Collections.Generic;
+
 List<Car> GetCars()
 {
     return new List<Car>
@@ -205,7 +209,7 @@ List<Car> GetCars()
                     new Car { VIN = "HIJ123", Make = "VW",
                             Model = "Bug",  Year = 1956  },
                     new Car { VIN = "DEF456", Make = "Ford",
-                            Model = "F-150", Year = 1998 }
+                            Model = "F-150", Year = 2005 }
                 };
 }
 
@@ -230,6 +234,113 @@ List<Book> getBooks()
         }
     };
 }
+
+List<Car> cars = GetCars();
+List<Car> filtered = new List<Car>();
+List<FilterPredicate> predicates = new List<FilterPredicate>();
+//predicates.Add(delegate (Car car) { return car.Year > 2000; });
+//predicates.Add(delegate (Car car) { return car.Model.StartsWith("F"); });
+
+//predicates.Add((Car car) => car.Year > 2000);
+//predicates.Add((Car car) => car.Model.StartsWith("F"));
+
+//predicates.Add(car => car.Year > 2000);
+//predicates.Add(car => car.Model.StartsWith("F"));
+//Console.WriteLine(GetCars().All(c => c.Year > 1960));
+//Console.WriteLine(GetCars().Any(c => c.Year > 1960));
+////var carsByVin = cars.ToDictionary(c => c.VIN);
+//var carsByVin = cars.ToLookup(c => c.VIN);
+//IEnumerable<Car> myCars = carsByVin["HIJ123"];
+//foreach(Car myCar in myCars)
+//Console.WriteLine("Car VIN:{0}, Make:{1}, Model:{2} Year:{3}",
+//                    myCar.VIN, myCar.Make, myCar.Model, myCar.Year);
+
+//var numbers = Enumerable.Range(1, 1000);
+//var zip = numbers.Zip(cars, (i, c) => new
+//{
+//    Number = i,
+//    CarMake = c.Make,
+//    CarModel=c.Model
+//});
+
+//foreach(var i in zip)
+//{
+//    Console.WriteLine("Car number:{0}, Make:{1}, Model:{2}",
+//                    i.Number, i.CarMake, i.CarModel);
+//}
+//foreach (Car item in cars)
+//{
+//    if (item.Year > 2000 && item.Model.StartsWith("F"))
+//    {
+//        filtered.Add(item);
+//    }
+//}
+
+//foreach (Car item in cars)
+//{
+//    if (FilterYear(item) && FilterModel(item))
+//    {
+//        filtered.Add(item);
+//    }
+//}
+
+//foreach (Car item in cars)
+//{
+//    if (CheckPredicates(item, predicates)) { filtered.Add(item); }
+//}
+
+//группировка
+//var query = cars.GroupBy(c => c.Make);
+//foreach (IGrouping<string, Car> group in query)
+//{
+//    Console.WriteLine("Key:{0}", group.Key);
+//    foreach (Car c in group)
+//    { 
+//        Console.WriteLine("Car VIN:{0} Make:{1}", c.VIN, c.Make); 
+//    }
+//}
+
+//сортировка
+//var carsSort = cars.OrderBy(c => c.Make)
+//                            .ThenByDescending(c => c.Model)
+//                            .ThenBy(c => c.Year);
+//foreach (var item in carsSort)
+//{
+//    Console.WriteLine("Car VIN:{0} Make:{1} Model:{2} Year:{3}",
+//        item.VIN, item.Make, item.Model, item.Year);
+//}
+
+//Фильтр
+//foreach (var myCar in cars.Where(c => c.Make == "Ford"))
+//{
+//    Console.WriteLine("Car VIN:{0}, Make:{1}, Model:{2} Year:{3}",
+//                        myCar.VIN, myCar.Make, myCar.Model, myCar.Year);
+//}
+
+var tuple = (5, 10);
+
+
+//foreach (Car item in filtered)
+//{
+//    Console.WriteLine(item.Model+" "+item.VIN+" "+item.Make+" "+item.Year+" "+item.Color);
+//}
+
+bool CheckPredicates(Car car, IList<FilterPredicate> predicates)
+{
+    foreach (FilterPredicate p in predicates)
+    {
+        if (!p(car)) { return false; }
+    }
+
+    return true;
+}
+bool FilterYear(Car car) { return car.Year > 2000; }
+bool FilterModel(Car car) { return car.Model.StartsWith("F"); }
+delegate bool FilterPredicate(Car car);
+
+
+
+
 
 public class MyStringList : List<string>
 {
