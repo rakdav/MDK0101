@@ -234,6 +234,20 @@ List<Book> getBooks()
         }
     };
 }
+List<Repair> GetRepairs()
+{
+    return new List<Repair> {
+        new Repair {VIN = "ABC123", Desc = "Change Oil", Cost = 29.99m},
+        new Repair {VIN = "DEF123", Desc = "Rotate Tires",  Cost =19.99m},
+        new Repair {VIN = "HIJ123", Desc = "Replace Brakes",   Cost = 200},
+        new Repair {VIN = "DEF456", Desc = "Alignment", Cost = 30},
+        new Repair {VIN = "ABC123", Desc = "Fix Flat Tire", Cost = 15},
+        new Repair {VIN = "DEF123", Desc = "Fix Windshield",  Cost =420},
+        new Repair {VIN = "ABC123", Desc = "Replace Wipers", Cost = 20},
+        new Repair {VIN = "HIJ123", Desc = "Replace Tires",   Cost = 1000},
+        new Repair {VIN = "DEF456", Desc = "Change Oil", Cost = 30} };
+}
+
 
 List<Car> cars = GetCars();
 List<Car> filtered = new List<Car>();
@@ -317,13 +331,151 @@ List<FilterPredicate> predicates = new List<FilterPredicate>();
 //                        myCar.VIN, myCar.Make, myCar.Model, myCar.Year);
 //}
 
-var tuple = (5, 10);
+//кортежи
+//var tuple = (5, 10);
+//(int,int,int) tuple = (5, 10,15);
+//Console.WriteLine(tuple.Item1);
+//Console.WriteLine(tuple.Item2);
+//tuple.Item1 += 26;
+//Console.WriteLine(tuple.Item1);
+
+
+//select
+//var vehicles = new List<Tuple<string, string, int>>
+//            {
+//                Tuple.Create("123", "VW", 1999),
+//                Tuple.Create("234", "Ford", 2009),
+//                Tuple.Create("567", "Audi", 2005),
+//                Tuple.Create("678", "Ford", 2003),
+//                Tuple.Create("789", "Mazda", 2003),
+//                Tuple.Create("999", "Ford", 1965)
+//            };
+//var fordCars = vehicles
+//                        .Where(v => v.Item2 == "Ford")
+//                        .Select(v => new Car
+//                        {
+//                            VIN = v.Item1,
+//                            Make = v.Item2,
+//                            Year = v.Item3
+//                        });
+//foreach (var item in fordCars)
+//{
+//    Console.WriteLine("Car VIN:{0} Make:{1} Year:{2}",
+//              item.VIN, item.Make, item.Year);
+//}
+
+//var fordCars = from v in vehicles
+//               let makeYear = v.Item2 + " " + v.Item3
+//               where makeYear.StartsWith("Ford")
+//               select new
+//               {
+//                   VIN = v.Item1,
+//                   MakeYear = makeYear
+//               };
+//foreach (var item in fordCars)
+//{
+//    Console.WriteLine("Car VIN:{0} MakeYear:{1}",
+//                        item.VIN, item.MakeYear);
+//}
+
+//selectMany
+//var repairs = new List<Tuple<string, List<string>>>
+//                    {
+//                        Tuple.Create("ABC123",
+//                                    new List<string> {"Rotate Tires", "Change oil"}),
+//                        Tuple.Create("DEF123",
+//                                    new List<string> {"Fix Flat", "Wash Vehicle"}),
+//                        Tuple.Create("ABC456",
+//                                    new List<string> {"Alignment", "Vacuum", "Wax"}),
+//                        Tuple.Create("HIJ123",
+//                                    new List<string> {"Spark plugs", "Air filter"}),
+//                        Tuple.Create("DEF456",
+//                                    new List<string> {"Wiper blades", "PVC valve"}),
+//                    };
+//var query = repairs.SelectMany(t =>
+//        t.Item2.Select(r => new { VIN = t.Item1, Repair = r }));
+
+//foreach (var item in query)
+//{
+//    Console.WriteLine("VIN:{0} Repair:{1}", item.VIN, item.Repair);
+//}
+
+//join
+//var makes = new string[] { "Audi", "BMW", "Ford", "Mazda", "VW" };
+//var query = makes.GroupJoin(cars,
+//    make => make, car => car.Make,
+//    (make, innerCar) => new { Make = make, Car = innerCar });
+//foreach (var item in query)
+//{
+//    Console.WriteLine("Make: {0}", item.Make);
+//    foreach (var car in item.Car)
+//        Console.WriteLine("Make: {0}, Car:{1} {2} {3}",
+//                        car.Make,car.Model,car.Year,car.VIN);
+//}
+
+
 
 
 //foreach (Car item in filtered)
 //{
 //    Console.WriteLine(item.Model+" "+item.VIN+" "+item.Make+" "+item.Year+" "+item.Color);
 //}
+
+//Inner Join
+var repairs = GetRepairs();
+//var carsWithRepairs = from c in cars
+//                      join r in repairs
+//                      on c.VIN equals r.VIN
+//                      orderby c.VIN, r.Cost
+//                      select new
+//                      {
+//                          c.VIN,
+//                          c.Make,
+//                          r.Desc,
+//                          r.Cost
+//                      };
+//foreach (var item in carsWithRepairs)
+//{
+//    Console.WriteLine("Car VIN:{0}, Make:{1}, Description:{2} Cost:{3:C}",
+//        item.VIN, item.Make, item.Desc, item.Cost);
+//}
+
+
+//var carsWithRepairs = from c in cars
+//                      join r in repairs
+//                      on c.VIN equals r.VIN into g
+//                      from r in g.DefaultIfEmpty()
+//                      orderby c.VIN, r == null ? 0 : r.Cost
+//                      select new
+//                      {
+//                          c.VIN,
+//                          c.Make,
+//                          Desc = r == null ? "***No Repairs***" : r.Desc,
+//                          Cost = r == null ? 0 : r.Cost
+//                      };
+//foreach (var item in carsWithRepairs)
+//{
+//    Console.WriteLine("Car VIN:{0}, Make:{1}, Description:{2} Cost:{3:C}",
+//        item.VIN, item.Make, item.Desc, item.Cost);
+//}
+
+var colors = new string[] { "Red", "Blue", "Green" };
+
+var carsWithRepairs = from car in cars
+                      from color in colors
+                      orderby car.VIN, color
+                      select new
+                      {
+                          car.VIN,
+                          car.Make,
+                          car.Model,
+                          Color = color
+                      };
+foreach (var item in carsWithRepairs)
+{
+    Console.WriteLine("Car VIN:{0}, Make:{1}, Model:{2} Color:{3}",
+                    item.VIN, item.Make, item.Model, item.Color);
+}
 
 bool CheckPredicates(Car car, IList<FilterPredicate> predicates)
 {
@@ -348,6 +500,13 @@ public class MyStringList : List<string>
     {
         return this.Select(s => filter(s) ? s.ToUpper() : s);
     }
+}
+
+public class Repair
+{
+    public string VIN { get; set; }
+    public string Desc { get; set; }
+    public decimal Cost { get; set; }
 }
 
 public class Car
