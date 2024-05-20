@@ -1,14 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
-using(ModelDB db=new ModelDB())
+using (ModelDB db=new ModelDB())
 {
-    //Team baltika = new Team { Name = "Балтика", Coach = "Игнашевич С.А." };
-    //Team cska = new Team { Name = "ЦСКА", Coach = "Федотов С.П." };
-    //db.AddRange(baltika, cska);
-    //Player dudka = new Player { Name = "Дудка", Position = "Мяченосец", Age = 18, Team = baltika };
-    //Player Masha = new Player { Name = "Крученекуда", Position = "Воротчик", Age = 17, Team = cska };
-    //db.AddRange(dudka, Masha);
-    //await db.SaveChangesAsync();
+    //Ввод данных
+    Team baltika = new Team { Name = "Балтика", Coach = "Игнашевич С.А." };
+    Team cska = new Team { Name = "ЦСКА", Coach = "Федотов С.П." };
+    db.AddRange(baltika, cska);
+    Player dudka = new Player { Name = "Дудка", Position = "Мяченосец", Age = 18, Team = baltika };
+    Player Masha = new Player { Name = "Крученекуда", Position = "Воротчик", Age = 17, Team = cska };
+    db.AddRange(dudka, Masha);
+    await db.SaveChangesAsync();
+
+    //вывод данных
     List<Team> teams = db.Teams!.ToList();
     foreach (var item in teams)
     {
@@ -17,7 +21,7 @@ using(ModelDB db=new ModelDB())
     List<Player> players = db.Players!.ToList();
     foreach (var item in players)
     {
-        Console.WriteLine(item.Name + " " + item.Position+""+item.Age+" "+item.Team?.Name);
+        Console.WriteLine(item.Name + " " + item.Position+" "+item.Age+" "+item.Team?.Name);
     }
     var listCompanies = db.Teams!.Include(p => p.Players).ToList();
     foreach(Team item in listCompanies)
@@ -25,9 +29,32 @@ using(ModelDB db=new ModelDB())
         Console.WriteLine(item.Name);
         foreach(Player player in item.Players!)
         {
-            Console.WriteLine(player.Name + " " + player.Position + "" + player.Age);
+            Console.WriteLine(player.Name + " " + player.Position + " " + player.Age);
         }
     }
+
+    //редактирование
+    //Team team = db.Teams!.FirstOrDefault(p=>p.Id==1)!;
+    //if (team != null)
+    //{
+    //    team.Name = "Спартак";
+    //    team.Coach = "Горлукович Ф.Л.";
+    //    await db.SaveChangesAsync();
+    //}
+
+    //удаление
+    //Player playerDel = db.Players!.FirstOrDefault(p => p.Id == 1)!;
+    //if (playerDel != null)
+    //{
+    //    db.Remove(playerDel);
+    //    await db.SaveChangesAsync();
+    //}
+    //Team teamDel = db.Teams!.FirstOrDefault(p => p.Id == 1)!;
+    //if (teamDel != null)
+    //{
+    //    db.Remove(teamDel);
+    //    await db.SaveChangesAsync();
+    //}
 }
 class ModelDB : DbContext
 {
@@ -36,8 +63,8 @@ class ModelDB : DbContext
     public DbSet<Team>? Teams { get; set; } = null;
     public ModelDB()
     {
-        //Database.EnsureDeleted();
-        //Database.EnsureCreated();
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -58,5 +85,5 @@ class Team
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Coach { get; set; }
-    public ICollection<Player>? Players { get; set; }
+    public List<Player>? Players { get; set; } = new();
 }
